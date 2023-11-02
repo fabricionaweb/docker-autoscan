@@ -1,4 +1,4 @@
-/config/*.log {
+/config/logs/*.log {
     # Rotate daily
     daily
     # Rotate when the size is bigger than 5MB
