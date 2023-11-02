@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv sh
+
+# change chdir
+cd /config
+
+# run with limited permissions
+exec s6-setuidgid $PUID:$PGID /app/autoscan \
+    --config=/config/config.yml \
+    --database=/config/autoscan.db \
+    --log=/config/activity.log
