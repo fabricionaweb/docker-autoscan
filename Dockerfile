@@ -28,8 +28,10 @@ COPY --from=source /src ./
 ARG VERSION
 ARG COMMIT=$VERSION
 RUN mkdir /build && \
-    go build \
-        -ldflags "-s -w -X main.Version=$VERSION -X main.GitCommit=$COMMIT -X main.Timestamp=$(date -u '+%S')" \
+    go build -trimpath -ldflags "-s -w \
+        -X main.Version=$VERSION \
+        -X main.GitCommit=$COMMIT \
+        -X main.Timestamp=$(date -u '+%S')" \
         -o /build/ ./cmd/...
 
 # runtime stage ================================================================
